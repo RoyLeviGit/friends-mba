@@ -8,7 +8,6 @@ type HeroContent = {
     description: string;
     backgroundAlt: string;
     joinButton: string;
-    donateButton: string;
 };
 
 export default function Hero({ locale }: { locale: Locale }) {

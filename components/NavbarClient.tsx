@@ -5,14 +5,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X, Globe } from "lucide-react";
-import { Button } from "@/components/ui/Button";
 import { Locale } from "@/lib/content";
 
 type NavbarContent = {
     navLinks: { name: string; href: string }[];
     logoAlt: string;
     logoText: string;
-    donateButton: string;
 };
 
 function localizeHref(href: string, locale: string): string {
@@ -50,9 +48,6 @@ const NavbarClient = ({ content: c, locale }: { content: NavbarContent; locale: 
                                 {link.name}
                             </Link>
                         ))}
-                        <Link href={localizeHref("/donate", locale)}>
-                            <Button variant="secondary" size="sm" className="font-bold shadow-sm">{c.donateButton}</Button>
-                        </Link>
                         <Link href={switchPath} className="flex items-center gap-1 rounded-md border border-slate-200 px-2 py-1 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900">
                             <Globe className="h-4 w-4" />
                             {otherLocaleLabel}
@@ -73,9 +68,6 @@ const NavbarClient = ({ content: c, locale }: { content: NavbarContent; locale: 
                                 {link.name}
                             </Link>
                         ))}
-                        <Link href={localizeHref("/donate", locale)} onClick={() => setIsOpen(false)}>
-                            <Button variant="secondary" className="w-full font-bold shadow-sm">{c.donateButton}</Button>
-                        </Link>
                         <Link href={switchPath} onClick={() => setIsOpen(false)} className="flex items-center justify-center gap-2 rounded-md border border-slate-200 py-2 text-sm font-medium text-slate-600 hover:bg-slate-100">
                             <Globe className="h-4 w-4" />
                             {otherLocaleLabel}

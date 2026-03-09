@@ -5,7 +5,6 @@ type NavbarContent = {
     navLinks: { name: string; href: string }[];
     logoAlt: string;
     logoText: string;
-    donateButton: string;
 };
 
 export default function Navbar({ locale }: { locale: Locale }) {

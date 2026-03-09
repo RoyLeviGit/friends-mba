@@ -14,7 +14,6 @@ type HeroContent = {
     description: string;
     backgroundAlt: string;
     joinButton: string;
-    donateButton: string;
 };
 
 const HeroClient = ({ content: c, locale }: { content: HeroContent; locale: Locale }) => {
@@ -40,15 +39,12 @@ const HeroClient = ({ content: c, locale }: { content: HeroContent; locale: Loca
                         {c.description}
                     </motion.p>
 
-                    <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.8, duration: 0.5 }} className="flex flex-col gap-4 pt-4 sm:flex-row">
-                        <Link href={`/${locale}/community`}>
+                    <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.8, duration: 0.5 }} className="pt-4">
+                        <Link href={`/${locale}/#about`}>
                             <Button size="lg" className="gap-2 text-lg">
                                 {c.joinButton}
                                 <ArrowLeft className="h-4 w-4" />
                             </Button>
-                        </Link>
-                        <Link href={`/${locale}/donate`}>
-                            <Button variant="outline" size="lg" className="text-lg">{c.donateButton}</Button>
                         </Link>
                     </motion.div>
                 </motion.div>

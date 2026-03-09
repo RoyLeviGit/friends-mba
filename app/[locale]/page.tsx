@@ -2,7 +2,6 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Timeline from "@/components/Timeline";
 import BlogGrid from "@/components/BlogGrid";
-import AlumniCTA from "@/components/AlumniCTA";
 import { Locale } from "@/lib/content";
 
 type Params = { params: Promise<{ locale: string }> };
@@ -17,7 +16,6 @@ export default async function Home({ params }: Params) {
       <About locale={l} />
       <Timeline locale={l} />
       <BlogGrid locale={l} />
-      <AlumniCTA locale={l} />
     </div>
   );
 }
