@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Instagram } from "lucide-react";
 import { Locale } from "@/lib/content";
 
 type HeroContent = {
@@ -14,6 +14,7 @@ type HeroContent = {
     description: string;
     backgroundAlt: string;
     joinButton: string;
+    instagramButton: string;
 };
 
 const HeroClient = ({ content: c, locale }: { content: HeroContent; locale: Locale }) => {
@@ -39,13 +40,19 @@ const HeroClient = ({ content: c, locale }: { content: HeroContent; locale: Loca
                         {c.description}
                     </motion.p>
 
-                    <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.8, duration: 0.5 }} className="pt-4">
+                    <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.8, duration: 0.5 }} className="flex gap-4 pt-4">
                         <Link href={`/${locale}/#about`}>
                             <Button size="lg" className="gap-2 text-lg">
                                 {c.joinButton}
                                 <ArrowLeft className="h-4 w-4" />
                             </Button>
                         </Link>
+                        <a href="https://www.instagram.com/friends_mba" target="_blank" rel="noopener noreferrer">
+                            <Button size="lg" variant="outline" className="gap-2 text-lg">
+                                <Instagram className="h-5 w-5" />
+                                {c.instagramButton}
+                            </Button>
+                        </a>
                     </motion.div>
                 </motion.div>
             </div>

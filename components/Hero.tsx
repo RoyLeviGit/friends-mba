@@ -8,6 +8,7 @@ type HeroContent = {
     description: string;
     backgroundAlt: string;
     joinButton: string;
+    instagramButton: string;
 };
 
 export default function Hero({ locale }: { locale: Locale }) {
