@@ -1,0 +1,32 @@
+@import "tailwindcss";
+@plugin "tailwindcss-animate";
+@plugin "@tailwindcss/typography";
+
+:root {
+  /* Design System Colors */
+  --color-primary: #1b5e20;
+  /* Forest Green */
+  --color-alert: #d32f2f;
+  /* Alert Red */
+  --color-background: #f8f9fa;
+  /* Light Gray */
+  --color-foreground: #1e293b;
+  /* Slate 800 */
+}
+
+@theme {
+  --font-sans: var(--font-heebo), sans-serif;
+
+  --color-primary: var(--color-primary);
+  --color-alert: var(--color-alert);
+  --color-background: var(--color-background);
+  --color-foreground: var(--color-foreground);
+
+  /* Add other utility classes if needed */
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+}
