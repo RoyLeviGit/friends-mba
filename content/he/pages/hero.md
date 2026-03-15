@@ -6,4 +6,5 @@ description: ברוכים הבאים לבית של לוחמי הרפואה. כא
 backgroundAlt: רקע עמותת ידידי גדוד הרפואה
 joinButton: הצטרפו אלינו
 instagramButton: עקבו אחרינו באינסטגרם
+donateButton: תרומה
 ---

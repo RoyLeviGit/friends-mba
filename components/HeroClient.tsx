@@ -15,6 +15,7 @@ type HeroContent = {
     backgroundAlt: string;
     joinButton: string;
     instagramButton: string;
+    donateButton: string;
 };
 
 const HeroClient = ({ content: c, locale }: { content: HeroContent; locale: Locale }) => {
@@ -50,7 +51,7 @@ const HeroClient = ({ content: c, locale }: { content: HeroContent; locale: Loca
                         <Link href={`/${locale}/#donate`}>
                             <Button size="lg" variant="secondary" className="gap-2 text-lg">
                                 <Heart className="h-5 w-5" />
-                                Donate
+                                {c.donateButton}
                             </Button>
                         </Link>
                         <a href="https://www.instagram.com/friends_mba" target="_blank" rel="noopener noreferrer">

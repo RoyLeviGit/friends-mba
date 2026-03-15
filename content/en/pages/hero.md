@@ -6,4 +6,5 @@ description: Welcome to the home of the combat medics. Here we connect generatio
 backgroundAlt: Friends of the Medical Battalion Association Background
 joinButton: Join Us
 instagramButton: Follow us on Instagram
+donateButton: Donate
 ---

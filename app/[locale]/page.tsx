@@ -17,7 +17,7 @@ export default async function Home({ params }: Params) {
       <About locale={l} />
       <Timeline locale={l} />
       <BlogGrid locale={l} />
-      <Donate />
+      <Donate locale={l} />
     </div>
   );
 }
