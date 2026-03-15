@@ -44,7 +44,6 @@ export default function DonateClient({ content: c }: { content: DonateContent })
             <iframe
               src="/api/donate"
               name="donorbox"
-              allowPaymentRequest
               allow="payment"
               className="rounded-xl"
               style={{ width: 370, height: 900, border: "none" }}
