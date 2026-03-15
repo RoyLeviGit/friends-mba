@@ -72,8 +72,13 @@ export default function DonateClient({ content: c }: { content: DonateContent })
                 <label style={{ display: "inline-flex", alignItems: "center", cursor: "default", fontSize: 16 }}>
                   <span style={{
                     display: "inline-block", width: 18, height: 18, borderRadius: 2,
-                    border: "2px solid rgba(0,0,0,.54)", marginInlineEnd: 8, boxSizing: "border-box"
-                  }} />
+                    backgroundColor: "rgb(63,81,181)", marginInlineEnd: 8, boxSizing: "border-box",
+                    position: "relative"
+                  }}>
+                    <svg viewBox="0 0 24 24" style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}>
+                      <path fill="none" stroke="#fff" strokeWidth="3.12" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                    </svg>
+                  </span>
                   <span style={{ color: "rgba(0,0,0,.87)" }}>Write us a comment</span>
                 </label>
               </div>
