@@ -22,4 +22,16 @@ posts:
     color: bg-purple-100 text-purple-800
     slug: hostages-return
     image: /images/blog/hostage1_v2.png
+  - title: "הרוח והמשפחה שמאחורי הגדוד"
+    excerpt: 'על הייחודיות של היחידה, המייסד שיצר גאוות יחידה יש מאין, הגיבוש שהפך למשפחה — ונאמנות שנמשכת עד היום.'
+    tag: מורשת וסיפורים
+    color: bg-green-100 text-green-800
+    slug: heritage-535
+    image: ""
+  - title: "גיבורי יום כיפור: חובשי הגדוד במלחמה"
+    excerpt: 'עדות אישית של בוגר הגדוד — מבית הכנסת ביום כיפור 73 ועד לצד השני של התעלה. על בלגן, אומץ ורפואה תחת אש.'
+    tag: מורשת וסיפורים
+    color: bg-green-100 text-green-800
+    slug: yom-kippur-535
+    image: ""
 ---

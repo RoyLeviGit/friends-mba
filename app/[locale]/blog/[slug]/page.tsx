@@ -48,9 +48,9 @@ export default async function BlogPost({ params }: Params) {
                     <Link href={`/${locale}`}><Button variant="ghost" className="gap-2">{c.backButton}<ArrowRight className="h-4 w-4" /></Button></Link>
                 </div>
                 <header className="mb-10 text-center md:text-right">
-                    <div className="relative mb-6 h-64 w-full overflow-hidden rounded-2xl bg-slate-200 shadow-lg md:h-96">
+                    {c.image && <div className="relative mb-6 h-64 w-full overflow-hidden rounded-2xl bg-slate-200 shadow-lg md:h-96">
                         <Image src={c.image} alt={c.title} fill priority className="object-cover" />
-                    </div>
+                    </div>}
                     <div className="mb-4 flex flex-wrap items-center justify-center gap-3 md:justify-start">
                         <span className="inline-flex items-center rounded-full bg-green-100 px-3 py-1 text-sm font-medium text-green-800">
                             <Tag className="ml-1 h-3 w-3" />{c.category}
