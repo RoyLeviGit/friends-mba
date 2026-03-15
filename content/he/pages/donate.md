@@ -6,4 +6,7 @@ description: התרומה שלכם תומכת ישירות בלוחמי גדוד
 legalNote: "התרומות מתבצעות בסיוע"
 legalOrg: P3 Israel
 legalSuffix: ", ארגון אמריקאי ללא מטרות רווח בעל סעיף 501(c)(3). כל התרומות בארה\"ב מוכרות לצורכי מס במלוא היקף החוק."
+commentInstruction: "כדי לוודא שהתרומה מגיעה אלינו, אנא סמנו את התיבה למטה והזינו את ההערה הבאה:"
+commentValue: Friends of the Medical Battalion Association
+copyButton: 📋 העתקה והמשך לתרומה
 ---

@@ -9,6 +9,9 @@ type DonateContent = {
   legalNote: string;
   legalOrg: string;
   legalSuffix: string;
+  commentInstruction: string;
+  commentValue: string;
+  copyButton: string;
 };
 
 export default function Donate({ locale }: { locale: Locale }) {
