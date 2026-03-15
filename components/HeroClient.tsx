@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
-import { ArrowLeft, Instagram } from "lucide-react";
+import { ArrowLeft, Instagram, Heart } from "lucide-react";
 import { Locale } from "@/lib/content";
 
 type HeroContent = {
@@ -45,6 +45,12 @@ const HeroClient = ({ content: c, locale }: { content: HeroContent; locale: Loca
                             <Button size="lg" className="gap-2 text-lg">
                                 {c.joinButton}
                                 <ArrowLeft className="h-4 w-4" />
+                            </Button>
+                        </Link>
+                        <Link href={`/${locale}/#donate`}>
+                            <Button size="lg" variant="secondary" className="gap-2 text-lg">
+                                <Heart className="h-5 w-5" />
+                                Donate
                             </Button>
                         </Link>
                         <a href="https://www.instagram.com/friends_mba" target="_blank" rel="noopener noreferrer">
