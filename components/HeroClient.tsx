@@ -41,19 +41,17 @@ const HeroClient = ({ content: c, locale }: { content: HeroContent; locale: Loca
                         {c.description}
                     </motion.p>
 
-                    <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.8, duration: 0.5 }} className="flex gap-4 pt-4">
+                    <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.8, duration: 0.5 }} className="flex flex-col sm:flex-row gap-4 pt-4">
                         <Link href={`/${locale}/#about`}>
                             <Button size="lg" className="gap-2 text-lg">
                                 {c.joinButton}
                                 <ArrowLeft className="h-4 w-4" />
                             </Button>
                         </Link>
-                        <Link href={`/${locale}/#donate`}>
-                            <Button size="lg" variant="secondary" className="gap-2 text-lg">
-                                <Heart className="h-5 w-5" />
-                                {c.donateButton}
-                            </Button>
-                        </Link>
+                        <Button size="lg" variant="secondary" className="gap-2 text-lg" onClick={() => document.getElementById("donate")?.scrollIntoView({ behavior: "smooth" })}>
+                            <Heart className="h-5 w-5" />
+                            {c.donateButton}
+                        </Button>
                         <a href="https://www.instagram.com/friends_mba" target="_blank" rel="noopener noreferrer">
                             <Button size="lg" variant="outline" className="gap-2 text-lg">
                                 <Instagram className="h-5 w-5" />

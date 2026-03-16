@@ -12,6 +12,8 @@ type DonateContent = {
   commentInstruction: string;
   commentValue: string;
   copyButton: string;
+  overlayReminder: string;
+  overlayDismiss: string;
 };
 
 export default function Donate({ locale }: { locale: Locale }) {

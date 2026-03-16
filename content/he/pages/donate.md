@@ -9,4 +9,6 @@ legalSuffix: ", ארגון אמריקאי ללא מטרות רווח בעל סע
 commentInstruction: "כדי לוודא שהתרומה מגיעה אלינו, אנא סמנו את התיבה למטה והזינו את ההערה הבאה:"
 commentValue: Friends of the Medical Battalion Association
 copyButton: 📋 העתקה והמשך לתרומה
+overlayReminder: "לא לשכוח! סמנו \"Write us a comment\" והדביקו:"
+overlayDismiss: ✅ הבנתי, קחו אותי לתרומה
 ---

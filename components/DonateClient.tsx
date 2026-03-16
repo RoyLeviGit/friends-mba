@@ -14,11 +14,14 @@ type DonateContent = {
   commentInstruction: string;
   commentValue: string;
   copyButton: string;
+  overlayReminder: string;
+  overlayDismiss: string;
 };
 
 export default function DonateClient({ content: c }: { content: DonateContent }) {
   const [height, setHeight] = useState(900);
   const [showForm, setShowForm] = useState(false);
+  const [showOverlay, setShowOverlay] = useState(false);
 
   const onMessage = useCallback((e: MessageEvent) => {
     if (e.origin === "https://donorbox.org" && e.data?.height) {
@@ -31,12 +34,32 @@ export default function DonateClient({ content: c }: { content: DonateContent })
     return () => window.removeEventListener("message", onMessage);
   }, [onMessage]);
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(c.commentValue);
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(c.commentValue);
+    } catch {
+      // fallback: select text for manual copy
+      const el = document.getElementById("comment-value");
+      if (el) {
+        const range = document.createRange();
+        range.selectNodeContents(el);
+        const sel = window.getSelection();
+        sel?.removeAllRanges();
+        sel?.addRange(range);
+      }
+    }
     setShowForm(true);
+    setShowOverlay(true);
   };
+
   return (
     <section id="donate" className="bg-gradient-to-br from-primary/5 via-white to-primary/10 py-16 md:py-24">
+      <style>{`
+        @keyframes pulseGlow {
+          0%, 100% { box-shadow: 0 0 0 0 rgba(251,191,36,.4); }
+          50% { box-shadow: 0 0 0 10px rgba(251,191,36,0); }
+        }
+      `}</style>
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
           <div className="space-y-6">
@@ -62,11 +85,15 @@ export default function DonateClient({ content: c }: { content: DonateContent })
             </p>
           </div>
 
-          <div className="mx-auto w-fit self-start space-y-3">
-            <div style={{ width: 386, fontFamily: "'Helvetica','Arial',sans-serif", background: "#fff9ed", border: "1px solid #fde68a", borderRadius: 12, padding: "12px 16px" }}>
+          <div className="mx-auto w-full max-w-[400px] self-start space-y-3">
+            {/* Instruction card with pulse */}
+            <div style={{
+              fontFamily: "'Helvetica','Arial',sans-serif", background: "#fff9ed",
+              border: "2px solid #fbbf24", borderRadius: 12, padding: "12px 16px",
+              animation: showForm ? "none" : "pulseGlow 2s ease-in-out infinite"
+            }}>
               <p style={{ fontSize: 13, color: "#92400e", marginBottom: 10, fontWeight: 500 }}>{c.commentInstruction}</p>
 
-              {/* Step 1: unchecked "Write us a comment" checkbox */}
               <div style={{ padding: "4px 0 8px", borderBottom: "1px solid #fde68a" }}>
                 <span style={{ fontSize: 12, color: "#92400e", fontWeight: 600, marginBottom: 4, display: "block" }}>① ⬇</span>
                 <label style={{ display: "inline-flex", alignItems: "center", cursor: "default", fontSize: 16 }}>
@@ -83,14 +110,17 @@ export default function DonateClient({ content: c }: { content: DonateContent })
                 </label>
               </div>
 
-              {/* Step 2: filled textarea */}
               <div style={{ paddingTop: 8 }}>
                 <span style={{ fontSize: 12, color: "#92400e", fontWeight: 600, marginBottom: 4, display: "block" }}>② ⬇</span>
                 <div style={{ position: "relative", display: "inline-block", width: "100%", paddingTop: 4, paddingBottom: 16 }}>
-                  <div style={{
-                    width: "100%", padding: "4px 0", fontSize: 16, color: "rgba(0,0,0,.87)",
-                    borderBottom: "1px solid rgba(0,0,0,.12)", fontWeight: 500, direction: "ltr"
-                  }} className="select-all">{c.commentValue}</div>
+                  <div
+                    id="comment-value"
+                    style={{
+                      width: "100%", padding: "4px 0", fontSize: 16, color: "rgba(0,0,0,.87)",
+                      borderBottom: "1px solid rgba(0,0,0,.12)", fontWeight: 500, direction: "ltr"
+                    }}
+                    className="select-all"
+                  >{c.commentValue}</div>
                   <label style={{ position: "absolute", bottom: 0, left: 0, right: 0, fontSize: 12, color: "rgb(63,81,181)" }}>Your comment</label>
                 </div>
               </div>
@@ -104,16 +134,35 @@ export default function DonateClient({ content: c }: { content: DonateContent })
                 }}
               >{c.copyButton}</button>
             </div>
+
+            {/* Iframe with overlay */}
             {showForm && (
-            <div className="rounded-2xl bg-white p-2 shadow-xl ring-1 ring-slate-200">
-            <iframe
-              src="https://donorbox.org/embed/give-page-donation?language=en&designation=Emergency+Relief"
-              name="donorbox"
-              allow="payment"
-              className="rounded-xl"
-              style={{ width: 370, height, border: "none", transition: "height 0.3s ease" }}
-            />
-            </div>
+              <div className="relative rounded-2xl bg-white p-2 shadow-xl ring-1 ring-slate-200">
+                {showOverlay && (
+                  <div
+                    className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-4 rounded-2xl px-4 text-center"
+                    style={{ backgroundColor: "rgba(0,0,0,.75)" }}
+                  >
+                    <p className="text-lg font-bold text-white">{c.overlayReminder}</p>
+                    <p
+                      className="select-all rounded bg-white/90 px-4 py-2 font-semibold text-slate-900"
+                      style={{ direction: "ltr" }}
+                    >{c.commentValue}</p>
+                    <button
+                      onClick={() => setShowOverlay(false)}
+                      className="rounded-lg px-6 py-3 text-base font-bold text-white transition-colors"
+                      style={{ backgroundColor: "rgb(63,81,181)" }}
+                    >{c.overlayDismiss}</button>
+                  </div>
+                )}
+                <iframe
+                  src="https://donorbox.org/embed/give-page-donation?language=en&designation=Emergency+Relief"
+                  name="donorbox"
+                  allow="payment"
+                  className="w-full rounded-xl"
+                  style={{ height, border: "none", transition: "height 0.3s ease" }}
+                />
+              </div>
             )}
           </div>
         </div>

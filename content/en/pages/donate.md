@@ -9,4 +9,6 @@ legalSuffix: ", a U.S. based, 501(c)(3), non-profit, for purpose, organization. 
 commentInstruction: "To ensure your donation reaches us, please check the checkbox below and enter the following comment:"
 commentValue: Friends of the Medical Battalion Association
 copyButton: 📋 Copy & Continue to Donate
+overlayReminder: "Don't forget! Check \"Write us a comment\" and paste:"
+overlayDismiss: ✅ I understand, let me donate
 ---
