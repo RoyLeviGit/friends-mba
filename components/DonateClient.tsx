@@ -59,6 +59,10 @@ export default function DonateClient({ content: c }: { content: DonateContent })
           0%, 100% { box-shadow: 0 0 0 0 rgba(251,191,36,.4); }
           50% { box-shadow: 0 0 0 10px rgba(251,191,36,0); }
         }
+        @keyframes btnPulse {
+          0%, 100% { box-shadow: 0 4px 14px rgba(22,163,74,.4); transform: scale(1); }
+          50% { box-shadow: 0 4px 24px rgba(22,163,74,.7); transform: scale(1.05); }
+        }
       `}</style>
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
@@ -127,10 +131,13 @@ export default function DonateClient({ content: c }: { content: DonateContent })
 
               <button
                 onClick={handleCopy}
+                className="transition-all hover:scale-[1.02] active:scale-95"
                 style={{
-                  width: "100%", marginTop: 12, padding: "10px 0", fontSize: 15, fontWeight: 600,
-                  color: "#fff", backgroundColor: "rgb(63,81,181)", border: "none", borderRadius: 8,
-                  cursor: "pointer"
+                  width: "100%", marginTop: 12, padding: "12px 0", fontSize: 15, fontWeight: 700,
+                  color: "#fff", background: "linear-gradient(135deg, #16a34a, #15803d)",
+                  border: "none", borderRadius: 10, cursor: "pointer",
+                  boxShadow: "0 4px 14px rgba(22,163,74,.4)",
+                  animation: "btnPulse 2s ease-in-out infinite"
                 }}
               >{c.copyButton}</button>
             </div>
