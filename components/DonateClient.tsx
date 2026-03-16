@@ -166,6 +166,7 @@ export default function DonateClient({ content: c }: { content: DonateContent })
                   src="https://donorbox.org/embed/give-page-donation?language=en&designation=Emergency+Relief"
                   name="donorbox"
                   allow="payment"
+                  sandbox="allow-scripts allow-forms allow-same-origin allow-popups"
                   className="w-full rounded-xl"
                   style={{ height, border: "none", transition: "height 0.3s ease" }}
                 />
