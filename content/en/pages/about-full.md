@@ -21,4 +21,7 @@ sections:
       - "Many of our people, who began their journey as young medics graduating from Training Base 10, fell in love with the world of medicine and over the years became senior physicians and specialists in the healthcare system. The most prominent example of this excellence is a battalion alumnus, Nobel Prize laureate in Chemistry, Prof. Aaron Ciechanover. To continue nurturing this excellence, the association actively works to raise and distribute scholarships for students from among our members."
       - "Alongside professional development, the association works tirelessly to strengthen the resilience of our human network: improving morale through events for reservists, creating essential moments of respite for fighters and caregivers on the front, and providing support and a warm embrace to families in the home front who share the burden with us."
       - "We invite you to be partners in this endeavor, to provide a tailwind for our work, and to join this special family. Together, we will continue to save lives and build a stronger, healthier, and more united Israeli society."
+  - heading: Our History
+    paragraphs:
+      - "The battalion was founded as a unique unit from day one — with a sense of mission, professionalism, and unit pride built from nothing. Over decades, the internal bond turned the battalion into a true family, with a loyalty that extends far beyond the years of service. From Yom Kippur 1973 to the Iron Swords war, the battalion's people have been there at every decisive moment."
 ---
