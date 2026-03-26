@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { getContent, Locale } from "@/lib/content";
 
 type AboutContent = {
@@ -6,6 +7,7 @@ type AboutContent = {
     headingHighlight: string;
     headingSuffix: string;
     imageAlt: string;
+    readMore?: string;
     paragraphs: string[];
 };
 
@@ -27,6 +29,11 @@ const About = ({ locale }: { locale: Locale }) => {
                                 </p>
                             ))}
                         </div>
+                        {c.readMore && (
+                            <Link href={`/${locale}/about`} className="inline-block text-primary font-medium hover:underline">
+                                {c.readMore}
+                            </Link>
+                        )}
                     </div>
 
                     <div className="relative mx-auto aspect-video w-full overflow-hidden rounded-2xl shadow-xl lg:order-first">
