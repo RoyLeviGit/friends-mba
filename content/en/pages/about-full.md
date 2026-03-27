@@ -24,4 +24,9 @@ sections:
   - heading: Our History
     paragraphs:
       - "The battalion was founded as a unique unit from day one — with a sense of mission, professionalism, and unit pride built from nothing. Over decades, the internal bond turned the battalion into a true family, with a loyalty that extends far beyond the years of service. From Yom Kippur 1973 to the Iron Swords war, the battalion's people have been there at every decisive moment."
+    links:
+      - text: "The Spirit and the Family Behind the Battalion →"
+        href: /blog/heritage
+      - text: "Yom Kippur Heroes: The Battalion's Medics at War →"
+        href: /blog/yom-kippur
 ---

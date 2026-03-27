@@ -3,7 +3,7 @@ import { ArrowRight, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Locale } from "@/lib/content";
 
-export type Section = { heading: string; paragraphs?: string[]; items?: string[] };
+export type Section = { heading: string; paragraphs?: string[]; items?: string[]; links?: { text: string; href: string }[] };
 export type SectionsPageContent = {
   title: string;
   subtitle: string;
@@ -49,6 +49,15 @@ const SectionsPage = ({ content: c, locale }: { content: SectionsPageContent; lo
                     </li>
                   ))}
                 </ul>
+              )}
+              {s.links && (
+                <div className="mt-6 flex flex-wrap gap-4">
+                  {s.links.map((link, j) => (
+                    <Link key={j} href={`/${locale}${link.href}`} className="text-primary font-medium hover:underline">
+                      {link.text}
+                    </Link>
+                  ))}
+                </div>
               )}
             </section>
           ))}

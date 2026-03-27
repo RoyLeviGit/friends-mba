@@ -24,3 +24,9 @@ export function getContentIfExists<T = Record<string, unknown>>(
   if (!fs.existsSync(fullPath)) return null;
   return getContent<T>(filePath, locale);
 }
+
+export function getBlogSlugs(locale: Locale = "he"): string[] {
+  const dir = path.join(contentDir, locale, "blog");
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir).filter(f => f.endsWith(".md")).map(f => f.replace(".md", ""));
+}

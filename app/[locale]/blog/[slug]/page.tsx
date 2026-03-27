@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Calendar, User, Tag } from "lucide-react";
 import { Button } from "@/components/ui/Button";
-import { getContentIfExists, Locale } from "@/lib/content";
+import { getContentIfExists, getBlogSlugs, Locale } from "@/lib/content";
 
 type BlogArticle = {
     title: string;
@@ -41,6 +41,13 @@ export default async function BlogPost({ params }: Params) {
     if (!article) notFound();
     const c = article!;
 
+    const otherPosts = getBlogSlugs(locale as Locale)
+        .filter(s => s !== slug)
+        .map(s => ({ slug: s, ...getContentIfExists<BlogArticle>(`blog/${s}.md`, locale as Locale)! }))
+        .slice(0, 4);
+
+    const moreLabel = locale === "he" ? "סיפורים נוספים" : "More Stories";
+
     return (
         <div className="min-h-screen bg-slate-50 pb-20 pt-24 font-sans text-slate-900">
             <div className="container mx-auto max-w-4xl px-4 md:px-6">
@@ -65,6 +72,19 @@ export default async function BlogPost({ params }: Params) {
                 <article className="prose prose-lg prose-slate max-w-none rounded-2xl bg-white p-8 shadow-sm md:p-12">
                     <div dangerouslySetInnerHTML={{ __html: markdownToHtml(c.content) }} className="leading-relaxed" />
                 </article>
+                {otherPosts.length > 0 && (
+                    <nav className="mt-12">
+                        <h2 className="mb-6 text-2xl font-bold text-slate-900">{moreLabel}</h2>
+                        <div className="grid gap-4 sm:grid-cols-2">
+                            {otherPosts.map(p => (
+                                <Link key={p.slug} href={`/${locale}/blog/${p.slug}`} className="rounded-2xl bg-white p-6 shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5">
+                                    <span className="mb-1 inline-block rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-800">{p.category}</span>
+                                    <h3 className="text-lg font-bold text-slate-900">{p.title}</h3>
+                                </Link>
+                            ))}
+                        </div>
+                    </nav>
+                )}
             </div>
         </div>
     );
